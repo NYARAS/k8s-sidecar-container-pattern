@@ -18,7 +18,7 @@ spec:
     # location as main application with a timestamp
     image: busybox
     command: ["/bin/sh"]
-    args: ["-c", "while true; do echo echo $(date -u) 'This is just an echo from simple Sidecar Container' >> /var/log/index.html; sleep 5;done"]
+    args: ["-c", "while true; do echo  $(date -u) 'This is just an echo from simple Sidecar Container' >> /var/log/index.html; sleep 5;done"]
     resources: {}
 
     # Mount the pod's shared log file into the sidecar
