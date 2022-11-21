@@ -25,6 +25,7 @@ The main container is a simple nginx application serving on the port 80 that tak
 
 Let’s implement a simple project to understand this pattern. Here is a simple pod that has main and sidecar containers. The main container is nginx serving on the port 80 that takes the index.html from the volume mount workdir location. The Sidecar container with the image busybox creates logs in the same location with a timestamp. Since the Sidecar container and main container runs parallel Nginx will display the new log information every time you hit in the browser.
 
+For you to apply this example, you need to to install [Minikube](https://minikube.sigs.k8s.io/docs/start/) as a prerequisite
 Apply the manifest
 ```bash
  kubectl apply -f sidecar-pod.yaml
