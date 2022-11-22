@@ -15,15 +15,13 @@ There are three common design patterns and use-cases for combining multiple cont
 - Adapter pattern
 - Ambassador pattern
 
-## Sidercar Pattern
+## Sidecar Pattern
 This pattern consists of a main application i.e. a web application plus a helper container with a responsibilty that is essential to the web application but it's not necessarily part of the application itself. The most common sidecar containers are logging utilities, sync services, watchers, and monitoring agents. It does not make sense if a logging container is running while the application itself isn't running, so we create a multi-container pod that has the main application and the sidecar container
 
 ### Example
 Let deploy a simple pod to understand this pattern. A pod that has main and sidecar containers.
 
 The main container is a simple nginx application serving on the port 80 that takes the index.html from the volume mount location. The Sidecar container uses busybox image writes the current date to a log file every five seconds. In practice, your sidecar is likely to be a log collection container that uploads to external storage.
-
-Let’s implement a simple project to understand this pattern. Here is a simple pod that has main and sidecar containers. The main container is nginx serving on the port 80 that takes the index.html from the volume mount workdir location. The Sidecar container with the image busybox creates logs in the same location with a timestamp. Since the Sidecar container and main container runs parallel Nginx will display the new log information every time you hit in the browser.
 
 For you to apply this example, you need to to install [Minikube](https://minikube.sigs.k8s.io/docs/start/) as a prerequisite
 Apply the manifest
